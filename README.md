@@ -8,7 +8,7 @@ The platform enables users to manage food donations, submit food requests, coord
 
 ## 🌐 Live Demo
 
-- **Frontend:** "share-bite-liart.vercel.app"
+- **Frontend:** "https://share-bite-liart.vercel.app"
 - **Backend API:** "https://sharebite-api-ryvz.onrender.com"
 
 
