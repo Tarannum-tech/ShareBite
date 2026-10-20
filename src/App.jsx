@@ -9,7 +9,8 @@ import {
 
 
 // const API = '/api'
-const API = "https://sharebite-api-ryvz.onrender.com"
+// const API = "https://sharebite-api-ryvz.onrender.com/api"
+const API = "https://sharebite-api-ryvz.onrender.com/api"
 async function api(path, options = {}) {
   const token = localStorage.getItem('sb_token')
   const response = await fetch(`${API}${path}`, { headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}), ...(options.headers || {}) }, ...options })
