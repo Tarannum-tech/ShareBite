@@ -8,10 +8,9 @@ The platform enables users to manage food donations, submit food requests, coord
 
 ## 🌐 Live Demo
 
-- **Frontend:** https://YOUR-VERCEL-URL
-- **Backend API:** https://sharebite-api-iyvz.onrender.com
+- **Frontend:** (share-bite-liart.vercel.app)
+- **Backend API:** "https://sharebite-api-ryvz.onrender.com"
 
-> Note: Replace `YOUR-VERCEL-URL` with your actual Vercel deployment URL. The backend may take a short time to respond if the hosting service is idle.
 
 ## ✨ Features
 
@@ -67,7 +66,6 @@ ShareBite/
 └── vite.config.js             # Vite configuration
 ```
 
-> Note: This structure is illustrative. Your actual repository may contain additional files and folders.
 
 ## ⚙️ Getting Started
 
