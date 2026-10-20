@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+sharebite-backend/node_modules/
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+sharebite-backend/.env
+sharebite-backend/.env.*
+!sharebite-backend/.env.example
+
+# Build files
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db

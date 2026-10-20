@@ -1,0 +1,13 @@
+# Secret Credentials
+.env
+.env.*
+!.env.example
+#Dependencies
+node_modules/
+#Build output
+dist/
+build/
+#Logs
+*.log
+#Local editor files
+.vscode/

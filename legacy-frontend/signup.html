@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Food Donor - Food Rescue Network</title>
+    <style>
+        /* Reusing the same base styles from the main page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header Styles (same as main page) */
+        .header-top {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-social a {
+            margin-left: 15px;
+            color: #555;
+        }
+        
+        .header-social a:hover {
+            color: #2ecc71;
+        }
+        
+        .main-header {
+            background-color: #2c3e50;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .main-nav li {
+            margin-left: 30px;
+        }
+        
+        .main-nav a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .main-nav a:hover {
+            color: #2ecc71;
+        }
+        
+        .donate-btn {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .donate-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        /* Signup Hero Section */
+        .signup-hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('donor-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .signup-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .signup-hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Signup Form Section */
+        .signup-section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-intro {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .form-intro h2 {
+            color: #2c3e50;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .form-intro p {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        .benefits-list {
+            list-style-type: none;
+            margin-top: 30px;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+        }
+        
+        .benefits-list li:before {
+            content: "✓";
+            color: #2ecc71;
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .signup-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #2ecc71;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #2ecc71;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #27ae60;
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .form-footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #7f8c8d;
+            text-align: center;
+        }
+        
+        /* Business Types Section */
+        .business-types {
+            background-color: #f8f9fa;
+            padding: 60px 20px;
+        }
+        
+        .types-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .types-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .types-title h2 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .types-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .type-card {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .type-icon {
+            font-size: 40px;
+            color: #2ecc71;
+            margin-bottom: 20px;
+        }
+        
+        .type-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer (same as main page) */
+        footer {
+            background-color: #1a252f;
+            color: white;
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a:hover {
+            color: #2ecc71;
+        }
+        
+        .footer-social a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container, .nav-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .main-nav ul {
+                margin-top: 20px;
+                flex-direction: column;
+            }
+            
+            .main-nav li {
+                margin: 10px 0;
+            }
+            
+            .signup-hero h1 {
+                font-size: 36px;
+            }
+            
+            .form-container {
+                padding: 30px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-top">
+        <div class="header-container">
+            <div>Connecting excess food with those in need since 2015</div>
+            <div class="header-social">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <header class="main-header">
+        <div class="header-container nav-container">
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="Food Rescue Network"></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="donors.html" class="active">Food Donors</a></li>
+                    <li><a href="charities.html">Charities</a></li>
+                    <li><a href="volunteers.html">Volunteers</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="#" class="donate-btn">Donate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Signup Hero Section -->
+    <section class="signup-hero">
+        <h1>Become a Food Donor</h1>
+        <p>Join our network of businesses fighting hunger and reducing food waste in our community</p>
+    </section>
+    
+    <!-- Signup Form Section -->
+    <section class="signup-section">
+        <div class="form-container">
+            <div class="form-intro">
+                <h2>Let's Get Started</h2>
+                <p>Complete this form to register your business as a food donor. Our team will review your application and contact you within 2 business days.</p>
+                
+                <ul class="benefits-list">
+                    <li>Tax deductible donations</li>
+                    <li>Reduce waste disposal costs</li>
+                    <li>Simple scheduling system</li>
+                    <li>Make a difference in your community</li>
+                    <li>Free pickup service</li>
+                </ul>
+            </div>
+            
+            <form class="signup-form" id="donorSignupForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name*</label>
+                        <input type="text" id="firstName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name*</label>
+                        <input type="text" id="lastName" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address*</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number*</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessName">Business Name*</label>
+                    <input type="text" id="businessName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessType">Business Type*</label>
+                    <select id="businessType" class="form-control" required>
+                        <option value="">Select your business type</option>
+                        <option value="restaurant">Restaurant/Café</option>
+                        <option value="catering">Catering Company</option>
+                        <option value="grocery">Grocery Store</option>
+                        <option value="hotel">Hotel/Resort</option>
+                        <option value="bakery">Bakery</option>
+                        <option value="school">School/University</option>
+                        <option value="corporate">Corporate Cafeteria</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Business Address*</label>
+                    <input type="text" id="address" class="form-control" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City*</label>
+                        <input type="text" id="city" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">ZIP Code*</label>
+                        <input type="text" id="zip" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="foodTypes">What types of food will you donate?*</label>
+                    <select id="foodTypes" class="form-control" multiple required>
+                        <option value="prepared">Prepared Foods</option>
+                        <option value="produce">Fresh Produce</option>
+                        <option value="dairy">Dairy Products</option>
+                        <option value="meat">Meat/Poultry</option>
+                        <option value="bakery">Bakery Items</option>
+                        <option value="packaged">Packaged Foods</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <small class="form-text">Hold Ctrl/Cmd to select multiple options</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="donationFrequency">Estimated Donation Frequency*</label>
+                    <select id="donationFrequency" class="form-control" required>
+                        <option value="">Select frequency</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="occasional">Occasionally</option>
+                        <option value="seasonal">Seasonal</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-block">Submit Application</button>
+                
+                <div class="form-footer">
+                    By submitting this form, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Business Types Section -->
+    <section class="business-types">
+        <div class="types-container">
+            <div class="types-title">
+                <h2>We Work With All Types of Food Businesses</h2>
+                <p>Any business that serves or sells food can participate in our program</p>
+            </div>
+            
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Restaurants</h3>
+                    <p>Donate surplus prepared food at the end of service</p>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Grocery Stores</h3>
+                    <p>Donate near-expiry or surplus packaged foods</p>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <h3>Caterers</h3>
+                    <p>Donate leftover food from events and functions</p>
+                </div>
+                
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3>Schools</h3>
+                    <p>Donate unused cafeteria food and ingredients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>Food Rescue Network is a nonprofit organization dedicated to reducing food waste and hunger by connecting food donors with local charities.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="donors.html">Food Donors</a></li>
+                        <li><a href="charities.html">Charities</a></li>
+                        <li><a href="volunteers.html">Volunteers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@foodrescuenetwork.org</li>
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Food Rescue Way, City, ST 12345</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Food Rescue Network. All rights reserved.
+            </div>
+        </footer>
+    
+        <script>
+            // Form submission handling
+            document.getElementById('donorSignupForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Form validation
+                const requiredFields = document.querySelectorAll('#donorSignupForm [required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.style.borderColor = '#e74c3c';
+                        isValid = false;
+                    } else {
+                        field.style.borderColor = '#ddd';
+                    }
+                });
+                
+                if (isValid) {
+                    // Here you would typically send the form data to your server
+                    alert('Thank you for your application! We will contact you shortly.');
+                    this.reset();
+                    
+                    // Scroll to top to show success message
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            });
+            
+            // Mobile menu toggle
+            document.addEventListener('DOMContentLoaded', function() {
+                const mobileMenuBtn = document.createElement('button');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.classList.add('mobile-menu-btn');
+                
+                const navContainer = document.querySelector('.nav-container');
+                const mainNav = document.querySelector('.main-nav');
+                
+                // Only add mobile menu if screen is small
+                if (window.innerWidth <= 768) {
+                    navContainer.prepend(mobileMenuBtn);
+                    mainNav.style.display = 'none';
+                    
+                    mobileMenuBtn.addEventListener('click', function() {
+                        if (mainNav.style.display === 'none') {
+                            mainNav.style.display = 'block';
+                        } else {
+                            mainNav.style.display = 'none';
+                        }
+                    });
+                }
+                
+                // Smooth scrolling for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+    </html>
+    

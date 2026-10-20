@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feedback - WasteNoFood</title>
+    <!-- Include the same stylesheets as main site -->
+    <style>
+        /* Feedback specific styles */
+        .feedback-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .feedback-title {
+            color: #33bbb0;
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Barlow Condensed', sans-serif;
+        }
+        
+        .feedback-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .feedback-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #000d38;
+        }
+        
+        .feedback-form input[type="text"],
+        .feedback-form input[type="email"],
+        .feedback-form textarea,
+        .feedback-form select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Karla', sans-serif;
+        }
+        
+        .feedback-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .feedback-form button {
+            background: #33bbb0;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .feedback-form button:hover {
+            background: #2aa79d;
+        }
+        
+        .feedback-thankyou {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+        
+        .feedback-thankyou h2 {
+            color: #33bbb0;
+            margin-bottom: 20px;
+        }
+        
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .rating-stars input {
+            display: none;
+        }
+        
+        .rating-stars label {
+            font-size: 30px;
+            color: #ddd;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        
+        .rating-stars input:checked ~ label {
+            color: #ffc107;
+        }
+        
+        .rating-stars label:hover,
+        .rating-stars label:hover ~ label {
+            color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include the same header as main site -->
+    <header class="header1">
+        <!-- Header content from main site -->
+    </header>
+
+    <main>
+        <section class="breadcrumb-area breadcrumb_height" style="background: #000927; padding: 100px 0;">
+            <div class="container">
+                <div class="breadcrumb-wrap text-center">
+                    <h2>Feedback</h2>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="feedback-container">
+                <h1 class="feedback-title">Share Your Experience</h1>
+                
+                <div class="feedback-form" id="feedbackForm">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="role">You are a:</label>
+                            <select id="role" name="role" required>
+                                <option value="">Select your role</option>
+                                <option value="donor">Food Donor</option>
+                                <option value="charity">Charity Representative</option>
+                                <option value="volunteer">Volunteer</option>
+                                <option value="admin">Administrator</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>How would you rate your experience?</label>
+                            <div class="rating-stars">
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label for="star5">★</label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4">★</label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3">★</label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2">★</label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1">★</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="feedback">Your Feedback</label>
+                            <textarea id="feedback" name="feedback" required placeholder="Please share your thoughts about WasteNoFood..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="suggestion">Suggestions for Improvement (Optional)</label>
+                            <textarea id="suggestion" name="suggestion" placeholder="How can we make WasteNoFood better?"></textarea>
+                        </div>
+                        
+                        <div class="form-group" style="text-align: center;">
+                            <button type="submit">Submit Feedback</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="feedback-thankyou" id="thankYouMessage">
+                    <h2>Thank You for Your Feedback!</h2>
+                    <p>We appreciate you taking the time to share your experience with WasteNoFood.</p>
+                    <p>Your input helps us improve our service and better serve our community.</p>
+                    <a href="index.html" class="btn" style="margin-top: 20px;">Return to Homepage</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Include the same footer as main site -->
+    <footer class="black-bg pt-115 pb-110 footer-widget-activated footer1">
+        <!-- Footer content from main site -->
+    </footer>
+
+    <script>
+        // Simple form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the data to your server
+            // For this example, we'll just show the thank you message
+            
+            document.getElementById('feedbackForm').style.display = 'none';
+            document.getElementById('thankYouMessage').style.display = 'block';
+            
+            // Scroll to thank you message
+            document.getElementById('thankYouMessage').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

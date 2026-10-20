@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Rescue Network</title>
+    <style>
+        /* Reset and Base Styles */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header Styles */
+        .header-top {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-social a {
+            margin-left: 15px;
+            color: #555;
+        }
+        
+        .header-social a:hover {
+            color: #2ecc71;
+        }
+        
+        .main-header {
+            background-color: #2c3e50;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            color: #f8f9fa;
+            height: 50px;
+        }
+        
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .main-nav li {
+            margin-left: 20px;
+        }
+        
+        .main-nav a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .main-nav a:hover {
+            color: #2ecc71;
+        }
+        
+        .nav-btn {
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+        
+        .donate-btn {
+            background-color: #2ecc71;
+        }
+        
+        .donate-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        .find-btn {
+            background-color: #3498db;
+        }
+        
+        .find-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .primary-btn, .secondary-btn {
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .primary-btn {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .primary-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        .secondary-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .secondary-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* How It Works Section */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 30px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            transition: transform 0.3s;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-icon {
+            font-size: 50px;
+            color: #2ecc71;
+            margin-bottom: 20px;
+        }
+        
+        .step h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: #f8f9fa;
+        }
+        
+        .testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 350px;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .testimonial-role {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        /* Partners Section */
+        .partners {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .partner-logo {
+            max-width: 150px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a:hover {
+            color: #2ecc71;
+        }
+        
+        .footer-social a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container, .nav-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .main-nav ul {
+                margin-top: 20px;
+                flex-direction: column;
+            }
+            
+            .main-nav li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 15px;
+            }
+            
+            .nav-btn {
+                margin-left: 0;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-top">
+        <div class="header-container">
+            <div>Connecting excess food with those in need since 2015</div>
+            <div class="header-social">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <header class="main-header">
+        <div class="header-container nav-container">
+            <div class="logo">
+                <h1>ShareBite</h1>
+
+                <!-- <img src="" alt="Food Rescue Network"> -->
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="fooddonors.html">Food Donors</a></li>
+                    <li><a href="charities.html">Charities</a></li>
+                    <li><a href="volunteers.html">Volunteers</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <div class="nav-buttons">
+                        <a href="find.html" class="nav-btn find-btn">Find Food</a>
+                        <a href="donate.html" class="nav-btn donate-btn">Donate</a>
+                    </div>
+                    <li><a href="feedback.html">Feedback</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Rescuing Food, Fighting Hunger</h1>
+        <p>We make it easy to connect excess food from businesses with organizations that serve people in need</p>
+        <div class="cta-buttons">
+            <a href="donate.html" class="primary-btn">Donate Food</a>
+            <a href="find.html" class="secondary-btn">Find Food</a>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section class="section">
+        <div class="section-title">
+            <h2>How It Works</h2>
+            <p>Our simple process connects food donors with local charities in just a few clicks</p>
+        </div>
+        
+        <div class="steps">
+            <div class="step">
+                <div class="step-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Food is Donated</h3>
+                <p>Restaurants, grocery stores, and farms post their excess food on our platform with just a few taps.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <h3>Charities Get Notified</h3>
+                <p>Local organizations receive instant alerts about available food donations in their area.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3>Food is Delivered</h3>
+                <p>Charities or volunteers pick up the food and distribute it to those who need it most.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="section testimonials">
+        <div class="section-title">
+            <h2>What Our Partners Say</h2>
+            <p>Hear from businesses and organizations using our platform</p>
+        </div>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    "Food Rescue Network has helped us redirect thousands of pounds of quality food to people who need it, rather than letting it go to waste."
+                </div>
+                <div class="testimonial-author">Kanchan Yadav</div>
+                <div class="testimonial-role">Student, LTCE</div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    "Before this platform, we struggled to find consistent food sources. Now we can reliably feed more people in our community."
+                </div>
+                <div class="testimonial-author">Tarannum Shah</div>
+                <div class="testimonial-role">Student, LTCE</div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    "As a volunteer, I love being able to see exactly where my help is needed and make an immediate impact."
+                </div>
+                <div class="testimonial-author">Sahil Singh</div>
+                <div class="testimonial-role">Student, LTCE</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Partners -->
+    <section class="section">
+        <div class="section-title">
+            <h2>Our Partners</h2>
+            <p>We work with businesses and organizations across the food industry</p>
+        </div>
+        
+        <div class="partners">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Emblem_of_Bombay_State.svg" alt="Partner 1" class="partner-logo">
+            <img src="https://vakilsearch.com/blog/wp-content/uploads/2021/05/VS_Blog-Images_3-05.png" alt="Partner 2" class="partner-logo">
+            <img src="https://www.swaminarayanvadtalgadi.org/wp-content/uploads/2023/07/Rajkot-768x768.jpg" alt="Partner 3" class="partner-logo">
+            <img src="https://ltce.in/img_ltce/logo.png" alt="Partner 4" class="partner-logo">
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>Food Rescue Network is a nonprofit organization dedicated to reducing food waste and hunger by connecting food donors with local charities.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html">How It Works</a></li>
+                    <li><a href="fooddonors.html">Food Donors</a></li>
+                    <li><a href="charities.html">Charities</a></li>
+                    <li><a href="volunteers.html">Volunteers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> info@foodrescuenetwork.org</li>
+                    <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i>Mumbai, Maharashtra</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 Food Rescue Network. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+                // Mobile menu toggle
+                document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.createElement('button');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.classList.add('mobile-menu-btn');
+            
+            const navContainer = document.querySelector('.nav-container');
+            const mainNav = document.querySelector('.main-nav');
+            
+            // Only add mobile menu if screen is small
+            if (window.innerWidth <= 768) {
+                navContainer.prepend(mobileMenuBtn);
+                mainNav.style.display = 'none';
+                
+                mobileMenuBtn.addEventListener('click', function() {
+                    if (mainNav.style.display === 'none') {
+                        mainNav.style.display = 'block';
+                    } else {
+                        mainNav.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Sticky header
+            const header = document.querySelector('.main-header');
+            const headerOffset = header.offsetTop;
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > headerOffset) {
+                    header.classList.add('sticky');
+                } else {
+                    header.classList.remove('sticky');
+                }
+            });
+            
+            // Add sticky class to header CSS
+            const style = document.createElement('style');
+            style.textContent = `
+                .main-header.sticky {
+                    position: fixed;
+                    top: 0;
+                    width: 100%;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    animation: slideDown 0.3s;
+                }
+                
+                @keyframes slideDown {
+                    from { transform: translateY(-100%); }
+                    to { transform: translateY(0); }
+                }
+                
+                .mobile-menu-btn {
+                    display: none;
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 24px;
+                    cursor: pointer;
+                    margin-bottom: 15px;
+                }
+                
+                @media (max-width: 768px) {
+                    .mobile-menu-btn {
+                        display: block;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
+

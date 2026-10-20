@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer - Food Rescue Network</title>
+    <style>
+        /* Reusing the same base styles from the main page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header Styles (same as main page) */
+        .header-top {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-social a {
+            margin-left: 15px;
+            color: #555;
+        }
+        
+        .header-social a:hover {
+            color: #2ecc71;
+        }
+        
+        .main-header {
+            background-color: #2c3e50;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .main-nav li {
+            margin-left: 30px;
+        }
+        
+        .main-nav a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .main-nav a:hover {
+            color: #2ecc71;
+        }
+        
+        .donate-btn {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .donate-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        /* Volunteer Hero Section */
+        .volunteer-hero {
+            background: linear-gradient(rgba(0,0,0,0.6), url('volunteer-hero.jpg'));
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+        
+        .volunteer-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .volunteer-hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Volunteer Opportunities Section */
+        .volunteer-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .opportunities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .opportunity-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .opportunity-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .opportunity-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .opportunity-content {
+            padding: 25px;
+        }
+        
+        .opportunity-content h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .opportunity-content p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .opportunity-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .primary-btn {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .primary-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        /* Volunteer Testimonials */
+        .volunteer-testimonials {
+            background-color: #f8f9fa;
+            padding: 80px 20px;
+        }
+        
+        .testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 350px;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .testimonial-role {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        /* Volunteer CTA */
+        .volunteer-cta {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        .volunteer-cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .volunteer-cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+        
+        /* Footer (same as main page) */
+        footer {
+            background-color: #1a252f;
+            color: white;
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a:hover {
+            color: #2ecc71;
+        }
+        
+        .footer-social a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container, .nav-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .main-nav ul {
+                margin-top: 20px;
+                flex-direction: column;
+            }
+            
+            .main-nav li {
+                margin: 10px 0;
+            }
+            
+            .volunteer-hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-top">
+        <div class="header-container">
+            <div>Connecting excess food with those in need since 2015</div>
+            <div class="header-social">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <header class="main-header">
+        <div class="header-container nav-container">
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="Food Rescue Network"></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="fooddonors.html">Food Donors</a></li>
+                    <li><a href="charities.html">Charities</a></li>
+                    <li><a href="volunteers.html" class="active">Volunteers</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="#" class="donate-btn">Donate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Volunteer Hero Section -->
+    <section class="volunteer-hero">
+        <h1>Join Our Volunteer Team</h1>
+        <p>Help us rescue food and fight hunger in your community. Every hour you give makes a difference.</p>
+        <a href="signup.html" class="btn primary-btn">Sign Up Now</a>
+    </section>
+    
+    <!-- Volunteer Opportunities Section -->
+    <section class="volunteer-section">
+        <div class="section-title">
+            <h2>Volunteer Opportunities</h2>
+            <p>We have several ways you can get involved based on your availability and interests</p>
+        </div>
+        
+        <div class="opportunities">
+            <div class="opportunity-card">
+                <div class="opportunity-image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/5e88e291ea4f6c4cc5e5d7f5/dcab1679-e7f6-4a6e-96eb-7471e68fbd30/Food+Rescue+Route+Driver+1.jpg');"></div>
+                <div class="opportunity-content">
+                    <h3>Food Rescue Driver</h3>
+                    <p>Pick up donated food from local businesses and deliver it to partner organizations serving those in need.</p>
+                    <div class="opportunity-meta">
+                        <span><i class="fas fa-clock"></i> 2-3 hours per shift</span>
+                        <span><i class="fas fa-car"></i> Vehicle required</span>
+                    </div>
+                    <a href="#" class="btn primary-btn">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="opportunity-image" style="background-image: url('https://img.freepik.com/free-photo/black-female-warehouse-worker-going-through-shipment-list-while-checking-stock-industrial-storage-compartment_637285-4044.jpg');"></div>
+                <div class="opportunity-content">
+                    <h3>Warehouse Assistant</h3>
+                    <p>Help sort, package, and organize rescued food at our distribution center before it goes out to partners.</p>
+                    <div class="opportunity-meta">
+                        <span><i class="fas fa-clock"></i> Flexible shifts</span>
+                        <span><i class="fas fa-utensils"></i> No experience needed</span>
+                    </div>
+                    <a href="#" class="btn primary-btn">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="opportunity-image" style="background-image: url('https://media.istockphoto.com/id/1199705901/photo/mid-adult-volunteer-shakes-hands-with-girl-at-registration-table.jpg?s=612x612&w=0&k=20&c=9dRm8UGu7XeI3qi9V07q0c140eIv__WMm3_JOYb8VpE=');"></div>
+                <div class="opportunity-content">
+                    <h3>Community Outreach</h3>
+                    <p>Help spread awareness about food rescue at community events and recruit new donors and volunteers.</p>
+                    <div class="opportunity-meta">
+                        <span><i class="fas fa-clock"></i> Weekends/events</span>
+                        <span><i class="fas fa-users"></i> Great for groups</span>
+                    </div>
+                    <a href="#" class="btn primary-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Volunteer Testimonials -->
+    <section class="volunteer-testimonials">
+        <div class="section-title">
+            <h2>What Our Volunteers Say</h2>
+            <p>Hear from people who are making a difference in their communities</p>
+        </div>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    "I love knowing that the few hours I spend each week driving food around town directly helps families in my community. It's so rewarding!"
+                </div>
+                <div class="testimonial-author">Maria Gonzalez</div>
+                <div class="testimonial-role">Food Rescue Driver, 2 years</div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    "The warehouse team has become like family. We have fun while doing important work, and I've learned so much about food systems."
+                </div>
+                <div class="testimonial-author">James Wilson</div>
+                <div class="testimonial-role">Warehouse Volunteer, 1 year</div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    "As a college student, this has been a perfect way to give back. The flexible scheduling lets me volunteer between classes."
+                </div>
+                <div class="testimonial-author">Taylor Smith</div>
+                <div class="testimonial-role">Student Volunteer, 6 months</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Volunteer CTA -->
+    <section class="volunteer-cta" id="signup">
+        <h2>Ready to Make a Difference?</h2>
+        <p>Join our network of volunteers helping to rescue food and fight hunger in your community. No experience necessary - we'll provide all the training you need.</p>
+        <a href="#" class="btn primary-btn">Become a Volunteer</a>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>Food Rescue Network is a nonprofit organization dedicated to reducing food waste and hunger by connecting food donors with local charities.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="donors.html">Food Donors</a></li>
+                    <li><a href="charities.html">Charities</a></li>
+                    <li><a href="volunteers.html">Volunteers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> info@foodrescuenetwork.org</li>
+                    <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Food Rescue Way, City, ST 12345</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 Food Rescue Network. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.createElement('button');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.classList.add('mobile-menu-btn');
+            
+            const navContainer = document.querySelector('.nav-container');
+            const mainNav = document.querySelector('.main-nav');
+            
+            // Only add mobile menu if screen is small
+            if (window.innerWidth <= 768) {
+                navContainer.prepend(mobileMenuBtn);
+                mainNav.style.display = 'none';
+                
+                mobileMenuBtn.addEventListener('click', function() {
+                    if (mainNav.style.display === 'none') {
+                        mainNav.style.display = 'block';
+                    } else {
+                        mainNav.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Highlight active nav item
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.main-nav a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href').split('/').pop();
+                if (currentPage === linkPage) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Add sticky class to header CSS
+            const style = document.createElement('style');
+            style.textContent = `
+                .main-header.sticky {
+                    position: fixed;
+                    top: 0;
+                    width: 100%;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    animation: slideDown 0.3s;
+                }
+                
+                @keyframes slideDown {
+                    from { transform: translateY(-100%); }
+                    to { transform: translateY(0); }
+                }
+                
+                .mobile-menu-btn {
+                    display: none;
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 24px;
+                    cursor: pointer;
+                    margin-bottom: 15px;
+                }
+                
+                @media (max-width: 768px) {
+                    .mobile-menu-btn {
+                        display: block;
+                    }
+                }
+                
+                .main-nav a.active {
+                    color: #2ecc71;
+                    font-weight: bold;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Sticky header
+            const header = document.querySelector('.main-header');
+            const headerOffset = header.offsetTop;
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > headerOffset) {
+                    header.classList.add('sticky');
+                } else {
+                    header.classList.remove('sticky');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
