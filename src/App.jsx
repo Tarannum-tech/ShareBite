@@ -8,7 +8,8 @@ import {
 } from 'lucide-react'
 
 
-const API = '/api'
+// const API = '/api'
+const API = "https://sharebite-api-ryvz.onrender.com"
 async function api(path, options = {}) {
   const token = localStorage.getItem('sb_token')
   const response = await fetch(`${API}${path}`, { headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}), ...(options.headers || {}) }, ...options })
